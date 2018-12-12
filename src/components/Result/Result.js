@@ -22,6 +22,7 @@ const Result = (props) => {
 
     return ( 
         <div className="calculator__result">{result}</div>
+        
         // <input 
         //     className="calculator__result" 
         //     type="text" 

@@ -4,6 +4,8 @@
 export const handleNumber = (e, number) => ({ type: "NUMBERCLICK", number: number })
 export const handleOperator = (e, symbol) => ({ type: "OPERATORCLICK", operator: symbol })
 export const handleResult = (e, symbol) => ({ type: "RESULTCLICK", operator: symbol })
+export const handleReset = (e) => ({ type: "RESETCLICK" })
+export const handleDecimal = (e) => ({ type: "DECIMALCLICK" })
 
 export const reducer = (state, action) => {
 
@@ -21,6 +23,7 @@ export const reducer = (state, action) => {
 
             if ( newState.calcStore.calcStoreoperator === '=' ) {
                 newState.calcStore.operatorA = parseFloat(action.number).toString();
+                newState.calcStore.history = [];
                 
             } else if ( !newState.calcStore.operator) {
                 newState.calcStore.operatorA = parseFloat(newState.calcStore.operatorA + action.number).toString();
@@ -44,12 +47,20 @@ export const reducer = (state, action) => {
                 return newState;
             } 
             
-            
-            if (!newState.calcStore.operator || newState.calcStore.operator === '='){ 
-                newState.calcStore.operator = action.operator;
 
-            // } else if ( newState.calcStore.operator === '=') { 
-            //     newState.calcStore.operator = action.operator;
+            if (!newState.calcStore.operator){ 
+                
+                const newHistory = [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorA).toString(), action.operator]];
+                
+                newState.calcStore.operator = action.operator;
+                newState.calcStore.history = newHistory;
+
+            } else if ( newState.calcStore.operator === '=') { 
+                
+                const newHistory = [...newState.calcStore.history, action.operator];
+                
+                newState.calcStore.operator = action.operator;
+                newState.calcStore.history = newHistory;
                 
             } else {
 
@@ -77,10 +88,15 @@ export const reducer = (state, action) => {
                     default:
                         break
                 }
+
+                const newHistory = newState.calcStore.operatorB !== '' ?
+						[...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator]] :
+						newState.calcStore.history
                 
                 newState.calcStore.operatorA = plusResult.toString();
                 newState.calcStore.operatorB = '';
                 newState.calcStore.operator = action.operator;
+                newState.calcStore.history = newHistory;
                 
             }
 
@@ -123,12 +139,53 @@ export const reducer = (state, action) => {
                     break
             }
                     
+            const newHistory = [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator, finalResult.toString()]];
+
+
             newState.calcStore.operatorA = finalResult.toString();
             newState.calcStore.operatorB = '';
             newState.calcStore.operator = action.operator;
-            
+            newState.calcStore.history = newHistory;
+
             return newState;
 
+        
+
+        /** handleReset Function 
+         *  Reseteamos a 0 la calculadora
+         */
+
+        case "RESETCLICK":
+
+            newState.calcStore.operatorA = '';
+            newState.calcStore.operatorB = '';
+            newState.calcStore.operator = null;
+            newState.calcStore.history = [];
+
+            return newState;
+
+
+
+        /** handleDecimal Function 
+         *  Añadimos un decimal al numbero que vemos en pantalla
+         */
+
+        case "DECIMALCLICK":
+
+            if ( newState.calcStore.operatorA === ''){
+                return newState;
+            }
+
+            if ( newState.calcStore.operatorB === ''){
+                newState.calcStore.operatorA = newState.calcStore.operatorA.concat('.');
+
+            } else {
+                newState.calcStore.operatorB = newState.calcStore.operatorB.concat('.');
+            }
+
+            return newState;
+
+            
         default:
             return state;
 

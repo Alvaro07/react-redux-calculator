@@ -33,24 +33,24 @@ class Calculator extends React.Component {
 	//  ----------------
 	//	Numeric function 
 	
-  handleNumber = (e, number) => {
-		e.target.blur();
+  // handleNumber = (e, number) => {
+	// 	e.target.blur();
 		
-		if ( this.state.operator === '=' ) {
-			this.setState({ 
-				operatorA: parseFloat(number).toString(),
-				operator: null,
-				history: []
-			})
+	// 	if ( this.state.operator === '=' ) {
+	// 		this.setState({ 
+	// 			operatorA: parseFloat(number).toString(),
+	// 			operator: null,
+	// 			history: []
+	// 		})
 			
-		} else if ( !this.state.operator) {
-			this.setState({ operatorA: parseFloat(this.state.operatorA + number).toString() });
+	// 	} else if ( !this.state.operator) {
+	// 		this.setState({ operatorA: parseFloat(this.state.operatorA + number).toString() });
 			
-		} else {
-			this.setState({ operatorB: parseFloat(this.state.operatorB + number).toString() });
-		}
+	// 	} else {
+	// 		this.setState({ operatorB: parseFloat(this.state.operatorB + number).toString() });
+	// 	}
 		
-  }
+  // }
 	
 	
 	//  ----------------
@@ -124,20 +124,20 @@ class Calculator extends React.Component {
 	//  ----------------
 	//	Result function
 
-	handleDecimal = (e) => {
-		e.target.blur();
+	// handleDecimal = (e) => {
+	// 	e.target.blur();
 
-		if ( this.state.operatorA === ''){
-			return
-		}
+	// 	if ( this.state.operatorA === ''){
+	// 		return
+	// 	}
 
-		if ( this.state.operatorB === ''){
-			this.setState({ operatorA: this.state.operatorA.concat('.') });
-		} else {
-			this.setState({ operatorB: this.state.operatorB.concat('.') });
-		}
+	// 	if ( this.state.operatorB === ''){
+	// 		this.setState({ operatorA: this.state.operatorA.concat('.') });
+	// 	} else {
+	// 		this.setState({ operatorB: this.state.operatorB.concat('.') });
+	// 	}
 
-	}
+	// }
 	
 	//  ----------------
 	//	Result function
@@ -214,16 +214,16 @@ class Calculator extends React.Component {
 	//  ----------------
 	//	Reset function
 	
-  handleReset = (e, operator) => {
-		e.target.blur();
+  // handleReset = (e, operator) => {
+	// 	e.target.blur();
 		
-    this.setState({
-      operatorA: '',
-      operatorB: '',
-      operator: null,
-			history: []
-    })
-  }
+  //   this.setState({
+  //     operatorA: '',
+  //     operatorB: '',
+  //     operator: null,
+	// 		history: []
+  //   })
+  // }
 
 
   render() {
