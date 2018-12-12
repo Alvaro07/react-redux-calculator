@@ -1,67 +1,18 @@
 import React from 'react';
-
 import Result from '../Result/Result';
+import Button from '../Button/Button';
 import { connect } from "react-redux";
-import { handleNumber, handleOperator } from "../../reducer";
+import { handleNumber, handleOperator, handleResult } from "../../reducer";
 
 
-// -----------------
-// Calculator's buttons
-
-const Button = (props) => {
-	return 	<button className={`calculator__btn ${props.extraClass}`} onClick={props.onClick}>{props.children}</button>
-}
-
-Button.defaultProps = {
-	extraClass: ''
-};
-
-
-
-// -----------------
-// Calculator component
+/**
+ * Calculator component
+ */
 
 class Calculator extends React.Component {
 
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     operatorA: '',
-  //     operatorB: '',
-  //     operator: null,
-	// 		history: []
-  //   }
-  // }
-	
-	
-	//  ----------------
-	//	Numeric function 
-	
-  // handleNumber = (e, number) => {}
-  // handleOperator = (e, operator) => {}
-	// handleDecimal = (e) => {}
-  // handleResult = (e, operator) => {}
-	// handleOnChange = (e) => {
-	// 	 // Only for keyUp fix
-	// }
-	// handleKeyUp = (e) => {}
-  // handleReset = (e, operator) => {}	
-
   render() {
-		
-		// let result = '0';
-		// console.log(this.props.state);
 
-    // if ( this.state.operatorB !== '') {
-    //   result = parseFloat(this.state.operatorB).toString();
-			
-    // } else if ( this.state.operatorA !== ''){
-    //   result = parseFloat(this.state.operatorA).toString();
-			
-    // } else {
-		// 	result = parseFloat(result).toString();
-			
-    // }
 
     return (
 
@@ -96,7 +47,7 @@ class Calculator extends React.Component {
 				<Button onClick={(e) => this.props.handleOperator(e,'/')} extraClass='calculator__btn--operator'>/</Button>
 
 				<Button onClick={(e) => this.handleReset(e)} extraClass='calculator__btn--reset'>C</Button>
-				<Button onClick={(e) => this.handleResult(e,'=')} extraClass='calculator__btn--equal'>=</Button>
+				<Button onClick={(e) => this.props.handleResult(e,'=')} extraClass='calculator__btn--equal'>=</Button>
 			</div>
 			
 		);
@@ -107,7 +58,8 @@ const mapStateToProps = state => ({ state });
 
 const mapDispatchToProps = (dispatch) => ({
   handleNumber: (e, number) => dispatch( handleNumber(e, number) ),
-  handleOperator: (e, symbol) => dispatch( handleOperator(e, symbol) )
+  handleOperator: (e, symbol) => dispatch( handleOperator(e, symbol) ),
+  handleResult: (e, symbol) => dispatch( handleResult(e, symbol) )
 });
 
 

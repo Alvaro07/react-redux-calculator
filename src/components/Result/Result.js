@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
 
+/**
+ * Result component
+ */
+
 const Result = (props) => {
 
     let result = '0';
