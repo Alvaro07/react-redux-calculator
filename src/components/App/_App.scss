@@ -1,0 +1,36 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--dark-gray: #333;
+	--medium-gray: #383838;
+	--gray: #5F6A72;
+	--light-gray: #707679;
+	--dark-green: #18597D;
+	--yellow: #e3b54d;
+	--purple: #4A4857;
+	--navy: #505C70;
+	--blue: #26A0CD;
+	--light-blue: #47abd0;
+	--orange: #e2725d;
+	--light-orange: #e87d68;
+}
+
+html, 
+body,
+.app {
+	height: 100%;
+}
+
+.app-wrap {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	
+}
