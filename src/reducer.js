@@ -1,6 +1,3 @@
-// es mejor manejar las condicionales con el newstate o con el state??
-// Condicional en el result??
-
 export const handleNumber = (e, number) => ({ type: "NUMBERCLICK", number: number })
 export const handleOperator = (e, symbol) => ({ type: "OPERATORCLICK", operator: symbol })
 export const handleResult = (e, symbol) => ({ type: "RESULTCLICK", operator: symbol })
@@ -10,7 +7,6 @@ export const handleDecimal = (e) => ({ type: "DECIMALCLICK" })
 export const reducer = (state, action) => {
 
     let newState = { ...state }
-    console.log(newState)
 
     switch (action.type) {
 
@@ -93,7 +89,7 @@ export const reducer = (state, action) => {
 						[...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator]] :
 						newState.calcStore.history
                 
-                newState.calcStore.operatorA = plusResult.toString();
+                newState.calcStorenewState.calcStore.operatorA = plusResult.toString();
                 newState.calcStore.operatorB = '';
                 newState.calcStore.operator = action.operator;
                 newState.calcStore.history = newHistory;
@@ -140,7 +136,6 @@ export const reducer = (state, action) => {
             }
                     
             const newHistory = [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator, finalResult.toString()]];
-
 
             newState.calcStore.operatorA = finalResult.toString();
             newState.calcStore.operatorB = '';

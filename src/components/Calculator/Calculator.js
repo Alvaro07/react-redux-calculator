@@ -54,16 +54,18 @@ class Calculator extends React.Component {
 	}
 }
 
-const mapStateToProps = state => ({ state });
+/**
+ * Redux connection
+ */
 
+
+const mapStateToProps = state => ({ state });
 const mapDispatchToProps = (dispatch) => ({
   handleNumber: (e, number) => dispatch( handleNumber(e, number) ),
   handleOperator: (e, symbol) => dispatch( handleOperator(e, symbol) ),
   handleResult: (e, symbol) => dispatch( handleResult(e, symbol) ),
 	handleReset: (e, symbol) => dispatch( handleReset(e) ),
 	handleDecimal: (e, symbol) => dispatch( handleDecimal(e) )
-	
-	
 });
 
 export default connect(

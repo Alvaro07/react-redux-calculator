@@ -22,16 +22,12 @@ const Result = (props) => {
 
     return ( 
         <div className="calculator__result">{result}</div>
-        
-        // <input 
-        //     className="calculator__result" 
-        //     type="text" 
-        //     value={this.props.value}
-        //     onChange={this.props.onChange} 
-        //     onKeyUp={this.props.onKeyUp} 
-        // />
     )
 }
+
+/**
+ * Redux connection
+ */
 
 const mapStateToProps = state => ({ operatorA: state.calcStore.operatorA, operatorB: state.calcStore.operatorB });
  
