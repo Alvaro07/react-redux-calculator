@@ -1,8 +1,9 @@
 import React from 'react';
 import Result from '../Result/Result';
 import Button from '../Button/Button';
-import { connect } from "react-redux";
-import { handleNumber, handleOperator, handleResult, handleReset, handleDecimal } from "../../reducer";
+import { connect } from 'react-redux';
+import { handleNumber, handleOperator, handleResult, handleReset, handleDecimal } from '../../reducer/reducer';
+
 
 /**
  * Calculator component
