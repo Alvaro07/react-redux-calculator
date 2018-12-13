@@ -4,12 +4,7 @@
 
 export const resetClick = (newState, action) => {
     
-    newState.operatorA = '';
-    newState.operatorB = '';
-    newState.operator = null;
-    newState.history = [];
-
-    return newState;
+    return { ...newState, operatorA: '', operatorB: '', operator: null, history: [] };
     
 }
 

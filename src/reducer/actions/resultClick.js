@@ -1,4 +1,3 @@
-
 /** handleResult Function 
  *  Función que gestiona el evento de pulsar sobre el boton de resultado final
  */
@@ -36,12 +35,8 @@ export const resultClick = (newState, action) => {
             
     const newHistory = [...newState.history, ...[parseFloat(newState.operatorB).toString(), action.operator, finalResult.toString()]];
 
-    newState.operatorA = finalResult.toString();
-    newState.operatorB = '';
-    newState.operator = action.operator;
-    newState.history = newHistory;
+    return { ...newState, operatorA: finalResult.toString(), operatorB: '', operator: action.operator, history: newHistory };
 
-    return newState;
     
 }
 

@@ -9,7 +9,6 @@ export const operatorClick = (newState, action) => {
         return newState;
     } 
     
-
     if (!newState.operator){ 
         
         const newHistory = [...newState.history, ...[parseFloat(newState.operatorA).toString(), action.operator]];
@@ -55,11 +54,8 @@ export const operatorClick = (newState, action) => {
                 [...newState.history, ...[parseFloat(newState.operatorB).toString(), action.operator]] :
                 newState.history
         
-        newState.calcStorenewState.operatorA = plusResult.toString();
-        newState.operatorB = '';
-        newState.operator = action.operator;
-        newState.history = newHistory;
-        
+        return { ...newState, operatorA: plusResult.toString(), operatorB: '', operator: action.operator, history: newHistory };
+
     }
 
     return newState;

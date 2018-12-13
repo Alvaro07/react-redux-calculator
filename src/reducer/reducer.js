@@ -4,7 +4,6 @@ import { resultClick } from './actions/resultClick';
 import { resetClick } from './actions/resetClick';
 import { decimalClick } from './actions/decimalClick';
 
-
 export const handleNumber = (e, number) => ({ type: "NUMBERCLICK", number: number })
 export const handleOperator = (e, symbol) => ({ type: "OPERATORCLICK", operator: symbol })
 export const handleResult = (e, symbol) => ({ type: "RESULTCLICK", operator: symbol })

@@ -5,7 +5,7 @@
 
 export const numberClick = (newState, action) => {
     
-    if ( newState.calcStoreoperator === '=' ) {
+    if ( newState.operator === '=' ) {
         newState.operatorA = parseFloat(action.number).toString();
         newState.history = [];
         
@@ -17,6 +17,7 @@ export const numberClick = (newState, action) => {
     }
 
     return newState
+    
 }
 
 export default numberClick;
