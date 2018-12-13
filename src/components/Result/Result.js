@@ -29,7 +29,7 @@ const Result = (props) => {
  * Redux connection
  */
 
-const mapStateToProps = state => ({ operatorA: state.calcStore.operatorA, operatorB: state.calcStore.operatorB });
+const mapStateToProps = state => ({ operatorA: state.operatorA, operatorB: state.operatorB });
  
 export default connect(
   mapStateToProps,

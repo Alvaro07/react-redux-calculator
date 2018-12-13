@@ -13,7 +13,7 @@ class Calculator extends React.Component {
 
   render() {
 
-		const history = this.props.state.calcStore.history;
+		const history = this.props.state.history;
 
     return (
 

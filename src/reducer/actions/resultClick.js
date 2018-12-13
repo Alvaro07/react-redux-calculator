@@ -5,15 +5,15 @@
 
 export const resultClick = (newState, action) => {
     
-    if ( newState.calcStore.operatorB === ''){
+    if ( newState.operatorB === ''){
         return newState;
     }
 
     let finalResult;
-    const opA = parseFloat(newState.calcStore.operatorA);
-    const opB = parseFloat(newState.calcStore.operatorB);
+    const opA = parseFloat(newState.operatorA);
+    const opB = parseFloat(newState.operatorB);
 
-    switch (newState.calcStore.operator) {
+    switch (newState.operator) {
         case '+':
             finalResult = Math.round((opA + opB) * 100) / 100;
             break;
@@ -34,12 +34,12 @@ export const resultClick = (newState, action) => {
             break
     }
             
-    const newHistory = [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator, finalResult.toString()]];
+    const newHistory = [...newState.history, ...[parseFloat(newState.operatorB).toString(), action.operator, finalResult.toString()]];
 
-    newState.calcStore.operatorA = finalResult.toString();
-    newState.calcStore.operatorB = '';
-    newState.calcStore.operator = action.operator;
-    newState.calcStore.history = newHistory;
+    newState.operatorA = finalResult.toString();
+    newState.operatorB = '';
+    newState.operator = action.operator;
+    newState.history = newHistory;
 
     return newState;
     

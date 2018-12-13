@@ -5,15 +5,15 @@
 
 export const numberClick = (newState, action) => {
     
-    if ( newState.calcStore.calcStoreoperator === '=' ) {
-        newState.calcStore.operatorA = parseFloat(action.number).toString();
-        newState.calcStore.history = [];
+    if ( newState.calcStoreoperator === '=' ) {
+        newState.operatorA = parseFloat(action.number).toString();
+        newState.history = [];
         
-    } else if ( !newState.calcStore.operator) {
-        newState.calcStore.operatorA = parseFloat(newState.calcStore.operatorA + action.number).toString();
+    } else if ( !newState.operator) {
+        newState.operatorA = parseFloat(newState.operatorA + action.number).toString();
     
     } else {
-        newState.calcStore.operatorB = parseFloat(newState.calcStore.operatorB + action.number).toString();
+        newState.operatorB = parseFloat(newState.operatorB + action.number).toString();
     }
 
     return newState

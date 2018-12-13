@@ -22,7 +22,7 @@ const calcStore = {
  * Redux store
  */
 
-let store = createStore(reducer, ({ calcStore }));
+let store = createStore(reducer, calcStore);
 
 
 /**

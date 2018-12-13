@@ -5,30 +5,30 @@
 
 export const operatorClick = (newState, action) => {
     
-    if ( newState.calcStore.operatorA === ''){
+    if ( newState.operatorA === ''){
         return newState;
     } 
     
 
-    if (!newState.calcStore.operator){ 
+    if (!newState.operator){ 
         
-        const newHistory = [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorA).toString(), action.operator]];
+        const newHistory = [...newState.history, ...[parseFloat(newState.operatorA).toString(), action.operator]];
         
-        newState.calcStore.operator = action.operator;
-        newState.calcStore.history = newHistory;
+        newState.operator = action.operator;
+        newState.history = newHistory;
 
-    } else if ( newState.calcStore.operator === '=') { 
+    } else if ( newState.operator === '=') { 
         
-        const newHistory = [...newState.calcStore.history, action.operator];
+        const newHistory = [...newState.history, action.operator];
         
-        newState.calcStore.operator = action.operator;
-        newState.calcStore.history = newHistory;
+        newState.operator = action.operator;
+        newState.history = newHistory;
         
     } else {
 
         let plusResult;
-        let opA = parseFloat(newState.calcStore.operatorA);
-        let opB = newState.calcStore.operatorB !== '' ? parseFloat(newState.calcStore.operatorB) : 0;
+        let opA = parseFloat(newState.operatorA);
+        let opB = newState.operatorB !== '' ? parseFloat(newState.operatorB) : 0;
 
         switch (action.operator) {
             case '+': 
@@ -51,14 +51,14 @@ export const operatorClick = (newState, action) => {
                 break
         }
 
-        const newHistory = newState.calcStore.operatorB !== '' ?
-                [...newState.calcStore.history, ...[parseFloat(newState.calcStore.operatorB).toString(), action.operator]] :
-                newState.calcStore.history
+        const newHistory = newState.operatorB !== '' ?
+                [...newState.history, ...[parseFloat(newState.operatorB).toString(), action.operator]] :
+                newState.history
         
-        newState.calcStorenewState.calcStore.operatorA = plusResult.toString();
-        newState.calcStore.operatorB = '';
-        newState.calcStore.operator = action.operator;
-        newState.calcStore.history = newHistory;
+        newState.calcStorenewState.operatorA = plusResult.toString();
+        newState.operatorB = '';
+        newState.operator = action.operator;
+        newState.history = newHistory;
         
     }
 

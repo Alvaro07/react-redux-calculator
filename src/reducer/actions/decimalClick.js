@@ -4,15 +4,15 @@
 
 export const decimalClick = (newState, action) => {
     
-    if ( newState.calcStore.operatorA === ''){
+    if ( newState.operatorA === ''){
         return newState;
     }
 
-    if ( newState.calcStore.operatorB === ''){
-        newState.calcStore.operatorA = newState.calcStore.operatorA.concat('.');
+    if ( newState.operatorB === ''){
+        newState.operatorA = newState.operatorA.concat('.');
 
     } else {
-        newState.calcStore.operatorB = newState.calcStore.operatorB.concat('.');
+        newState.operatorB = newState.operatorB.concat('.');
     }
 
     return newState;
